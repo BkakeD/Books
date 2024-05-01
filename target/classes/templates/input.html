@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Book</title>
+<script>
+	function validateForm() {
+	    let x = document.forms["nameForm"]["name"].value;
+	    let y = document.forms["nameForm"]["author"].value;
+		let a = document.forms["nameForm"]["isbn"].value;
+		let z = document.forms["nameForm"]["pageCount"].value;
+	    if (x == "" || y == "" || a == "") {
+	        alert("All fields must be filled out");
+	        return false;
+	    }
+		else if (z < 0) {
+			alert("You must have at least one page");
+			return false;
+		}
+	    else {
+	        return true;
+	    }
+	}
+</script>
+</head>
+<body>
+<form id="nameForm" name="nameForm" th:object="${newBook}" th:action="@{/inputBook}" method='POST' onsubmit="return validateForm();">
+Name: <input name="name" size="20" th:field="*{name}"> <br />
+Author: <input name="author" size="20" th:field="*{author}"><br />
+ISBN: <input name="isbn" size="20" th:field="*{isbn}"><br />
+Page Count: <input name="pageCount" size="5" th:field="*{pageCount}"><br />
+<input name="submit" type="submit" value="submit" />
+</form>
+<a href="/viewAll">View all Books</a>
+</body>
+</html>

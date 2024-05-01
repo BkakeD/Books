@@ -15,7 +15,7 @@ import dmacc.controller.BeanConfiguration;
 import dmacc.repository.BookRepository;
 
 @SpringBootApplication
-public class BooksApplication implements CommandLineRunner {
+public class BooksApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BooksApplication.class, args);
@@ -24,7 +24,6 @@ public class BooksApplication implements CommandLineRunner {
 	@Autowired
 	BookRepository repo;
 
-	@Override
 	public void run(String... args) throws Exception {
 
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
